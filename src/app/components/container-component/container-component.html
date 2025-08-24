@@ -1,0 +1,25 @@
+<div class="main-body">
+  @if (loggedUser$ | async; as user) {
+  <div class="logged-user-container logged-user">
+    <div>
+      <label>Logged user:</label>
+      <span> {{ user.name }}</span>
+    </div>
+    <div>
+      <a class="link-underline-primary" (click)="logout()">Logout</a>
+    </div>
+  </div>
+  }
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="list" routerLinkActive="active">List</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="favourites" routerLinkActive="active"
+        >Favourites</a
+      >
+    </li>
+  </ul>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,59 @@
+<div class="main-body">
+  <h1>List</h1>
+  <div>
+    <form [formGroup]="searchForm">
+      <div class="input-search-container">
+        <div class="input-search-button">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            formControlName="searchText"
+          />
+        </div>
+        <div class="input-search-button">
+          <button
+            class="btn btn-outline-primary my-2 my-sm-0"
+            [disabled]="(isloading$ | async) === true"
+            (click)="onSearch()"
+          >
+            @if ((isloading$ | async) === false) {
+            <span>Search</span>
+            } @else {
+            <span class="spinner-border spinner-border-sm"></span>
+            <span role="status">Loading...</span>
+            }
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="mt-24">
+    @if (filteredBooks$ | async; as filteredBooks) {
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr class="header-text">
+          <th scope="col">Title</th>
+          <th scope="col">Authors</th>
+          <th scope="col">Released</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (book of filteredBooks; track book.isbn) {
+        <tr class="list-text" (click)="onShowDetail(book)">
+          <td>{{ book.name }}</td>
+          <td>
+            @for (item of book.authors; track item) {
+            <span>{{ item }}</span> <br />
+            }
+          </td>
+          <td>{{ book.released | date : "dd.MM.yyyy" }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    }
+  </div>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,39 @@
+<div class="main-body">
+  <h1>Favourites</h1>
+  <div class="mt-24">
+    @if (favouriteBooks$ | async; as favouriteBooks) {
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr class="header-text">
+          <th scope="col">Title</th>
+          <th scope="col">Authors</th>
+          <th scope="col">Released</th>
+          <th scope="col">Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (book of favouriteBooks; track book.isbn) {
+        <tr class="list-not-selectable-text">
+          <td>{{ book.name }}</td>
+          <td>
+            @for (item of book.authors; track item) {
+            <span>{{ item }}</span> <br />
+            }
+          </td>
+          <td>{{ book.released | date : "dd.MM.yyyy" }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-primary btn-sm"
+              (click)="removeFromFavourites(book)"
+            >
+              Remove
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    }
+  </div>
+</div>

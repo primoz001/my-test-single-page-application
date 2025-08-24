@@ -1,0 +1,85 @@
+.main-body {
+  margin: 32px;
+  font-family: sans-serif;
+}
+
+.header-text {
+  font-size: 18px;
+  font-style: bold;
+}
+
+.input-search-container {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  place-items: center;
+}
+
+.input-search-button {
+  padding-right: 8px;
+}
+
+.list-text {
+  font-size: 12px;
+}
+
+.list-text:hover {
+  cursor: pointer;
+}
+
+.list-not-selectable-text {
+  font-size: 12px;
+}
+
+.mt-24 {
+  margin-top: 24px;
+}
+
+.mt-8 {
+  margin-top: 8px;
+}
+
+.logged-user-container {
+  text-align: end;
+  font-size: 12px;
+}
+
+.logged-user {
+  font-size: 12px;
+}
+
+.login-container {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.login-input {
+  padding-right: 8px;
+}
+
+@media all and (max-width: 650px) {
+  .header-text {
+    font-size: 16px;
+    font-style: bold;
+  }
+
+  .list-text {
+    font-size: 12px;
+  }
+
+  .list-not-selectable-text {
+    font-size: 12px;
+  }
+
+  table,
+  th,
+  tr,
+  td {
+    display: block !important;
+  }
+
+  .login-container {
+    flex-direction: column;
+  }
+}

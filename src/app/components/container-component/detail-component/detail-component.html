@@ -1,0 +1,48 @@
+<div class="main-body">
+  <h1>Detail</h1>
+  <div class="mt-24">
+    @if (book$ | async; as book) {
+    <table class="table table-bordered">
+      <thead>
+        <tr class="header-text">
+          <th scope="col">Isbn</th>
+          <th scope="col">Title</th>
+          <th scope="col">Authors</th>
+          <th scope="col">Pages</th>
+          <th scope="col">Publisher</th>
+          <th scope="col">Country</th>
+          <th scope="col">Media</th>
+          <th scope="col">Released</th>
+          <th scope="col">Favourites</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="list-not-selectable-text">
+          <td>{{ book.isbn }}</td>
+          <td>{{ book.name }}</td>
+          <td>
+            @for (item of book.authors; track item) {
+            <span>{{ item }}</span> <br />
+            }
+          </td>
+          <td>{{ book.numberOfPages }}</td>
+          <td>{{ book.publisher }}</td>
+          <td>{{ book.country }}</td>
+          <td>{{ book.mediaType }}</td>
+          <td>{{ book.released | date : "dd.MM.yyyy" }}</td>
+          <td>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                [formControl]="inFavourites"
+                (change)="onAddRemoveFavourites(book)"
+              />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    }
+  </div>
+</div>
