@@ -72,7 +72,6 @@ export class AuthService implements OnDestroy {
    * User logout
    */
   logout(): void {
-    localStorage.setItem('loggedUser', JSON.stringify({}));
     this.userLoggedIn$.next(false);
     this.router.navigate(['/login']);
   }
