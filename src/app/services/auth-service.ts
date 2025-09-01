@@ -53,7 +53,7 @@ export class AuthService implements OnDestroy {
       .subscribe({
         next: (res) => {
           const existingUser = this.getExistingUser(res, login);
-          if (existingUser) {
+          if (existingUser?.username) {
             this.loggedUser$.next(existingUser);
             this.userLoginError$.next(false);
             this.userLoggedIn$.next(true);
